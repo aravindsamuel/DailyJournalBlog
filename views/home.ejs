@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Journal Blog</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <%- include("partials/header"); -%>
+
+    <h1>Home</h1>
+    <p> <%= startingContent %> </p>
+    <button class="btn composebox"><a class="composebtn" href="/compose">Compose</a></button>
+
+  <%  posts.forEach(function(post){ %>
+    <div class="titlebox">
+    <h3 class="post-title"><%=post.title%></h3>
+    <a class="delete" href="/delete/<%= post._id%>"><i class="fa-solid fa-trash" style="color: #1abc9c;"></i></a>
+    </div>
+    <p>
+    <%=post.content.substring(0, 100) + " ..."%>
+    <a href="/posts/<%=post._id%>">Read More</a>
+    </p>
+    <% }) %>
+
+
+<%- include("partials/footer"); -%>
+</body>
+</html>
